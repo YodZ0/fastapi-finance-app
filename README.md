@@ -10,5 +10,4 @@
     poetry install
     ```
 3. Mark `src` as `Sources Root`
-4. Create `.env` according to '.env.template'
-
+4. Create `.env` according to `.env.template`
