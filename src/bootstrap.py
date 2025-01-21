@@ -8,8 +8,8 @@ from src.middleware import apply_middleware
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    print(">>> Start src")
     print(">>> Start app")
+    await init_db()
     yield
     print("<<< Dispose app")
 
