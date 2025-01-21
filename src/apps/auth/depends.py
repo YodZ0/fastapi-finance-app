@@ -18,7 +18,6 @@ def get_security_service() -> SecurityServiceProtocol:
 
 
 def get_token_service() -> TokenServiceProtocol:
-    # TODO: add tokens repository
     return TokenServiceImpl()
 
 
