@@ -9,8 +9,9 @@ from src.middleware import apply_middleware
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     print(">>> Start src")
+    print(">>> Start app")
     yield
-    print("<<< Dispose src")
+    print("<<< Dispose app")
 
 
 def create_app() -> FastAPI:
@@ -19,5 +20,6 @@ def create_app() -> FastAPI:
         description="Take control of your finance!",
         lifespan=lifespan,
     )
-    app = apply_routes(apply_middleware(app))
+    app = apply_middleware(app)
+    app = apply_routes(app)
     return app
