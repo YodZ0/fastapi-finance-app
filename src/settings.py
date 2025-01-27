@@ -11,13 +11,21 @@ class RunConfig(BaseModel):
     port: int = 8000
 
 
+class AuthJWTConfig(BaseModel):
+    private_key_path: Path = BASE_DIR / "certs" / "jwt-private.pem"
+    public_key_path: Path = BASE_DIR / "certs" / "jwt-public.pem"
+    algorithm: str = "RS256"
+    access_token_expire_minutes: int = 3
+    refresh_token_expire_days: int = 7
+
+
 class DataBaseConfig(BaseModel):
     host: str
     port: int
     user: str
     password: str
     name: str
-    provider: str = "postgresql+psycopg_async"
+    provider: str = "postgresql+asyncpg"
 
     @property
     def dsn(self) -> str:
@@ -31,11 +39,12 @@ class DataBaseConfig(BaseModel):
 class Settings(BaseSettings):
     debug: bool
     base_url: str
-    base_dir: Path = BASE_DIR  # ..\fastapi-starter
+    base_dir: Path = BASE_DIR  # ..\fastapi-finance
 
     db: DataBaseConfig
     cors_origins: list[str]
     run: RunConfig = RunConfig()
+    auth_jwt: AuthJWTConfig = AuthJWTConfig()
 
     model_config = SettingsConfigDict(
         env_file=(base_dir / ".env"),
