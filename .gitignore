@@ -13,4 +13,4 @@ logs/
 /**/.pytest_cache
 .mypy_cache/
 
-speech_analysis/certs/ftp/*
+/certs/
