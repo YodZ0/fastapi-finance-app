@@ -1,2 +1,0 @@
-from .repository import UsersRepositoryProtocol as UsersRepositoryProtocol
-from .repository import UsersRepositoryImpl as UsersRepositoryImpl

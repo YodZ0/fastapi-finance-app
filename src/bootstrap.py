@@ -4,6 +4,7 @@ from fastapi import FastAPI
 
 from src.router import apply_routes
 from src.middleware import apply_middleware
+from src.core.database import init_db
 
 
 @asynccontextmanager
